@@ -18,3 +18,104 @@ Onair waiTing Line (OTL)
 - Java
 - Javascript
 - SQL
+
+## 기술 스택
+- server
+  - Springboot (Spring Web MVC)
+  - DB : H2DB
+  - Java8
+  - 화면
+    - view template engine : handlebars
+    - websocket
+- MQ
+  - RabbitMQ 3.8.1 (Java client)
+- api
+  - nodejs 12.x.x
+- push
+  - nodejs 12.x.x
+  - websocket
+
+## git 추천 동사
+- Add : 새로운 기능추가
+- Remove : 제거
+- Improve : 기능, 성능의 향상
+- Fix : 버그, 오타 등 수정
+- Doc : 문서화
+- Refactor : 리팩토링
+- Polish : 잡다한 수정 묶음 (다른 적절한 문구가 없을 경우 사용)
+
+### 사용 예시
+- Add LiveApi 호출 로직 (#20)
+- Remove 사용하지 않는 변수 (#15)
+- Polish (#13, #14)
+
+## 개발환경 IDE 설정
+- 개발도구
+  - Intellij IDEA 2019.2.4
+
+- Line separator 설정
+  - File > Settings > Editor > Code Style
+  - General 탭
+  - Line separator : Unix and OS X(\n)
+- 탭설정
+  - File > Settings > Editor > Code Style > Java
+  - Tabs and Indents 탭
+  - Use tab charactor : 체크
+  - Tab size : 4
+- 화이트 스페이스 보이게 하기
+  - 탭과 스페이스를 IDE 안에서 쉽게 구분이 가능하도록 설정한다.
+  - File > Settings > Editor > General > Appearance 메뉴로 이동한다.
+  - Show whitespaces를 선택한다. 하위 분류에서 Leading, Inner,Trailing를 모두 선택한다.
+- File Encoding
+  - 모든 파일의 인코딩은 UTF-8
+
+## 코딩 컨벤션
+
+- java coding convention on a page
+
+## 가상서버 계정
+
+- id : campus / campussu
+- pwd : 별도공유
+- 접속 서버
+  - 106.10.33.151:20191 (server-otl)
+  - 106.10.33.151:20193 (push-otl)
+  - 106.10.33.151:20194 (liveapi-otl)
+  - 106.10.33.151:20195 (mq-otl)
+
+## 세부 컴포넌트
+
+### server
+- 스포츠 경기페이지
+- 영상 정보 요청/ 상황에 따른 처리
+  - 성공시 영상 보여줌
+  - 실패시 대기열 진입 (대기열 websocket 접속)
+
+
+### liveapi
+- liveapi 정보 리턴
+  - 응답 포맷 예
+{
+  "success": true,
+  "channel": {
+  	"id": "100",
+  	"name": "naver sports tv"
+  }
+}
+{
+	"success": false,
+	"channel": {}
+}
+- data는 H2DB에 넣음
+- data 수동관리 필요
+
+### mq
+- 대기열 진입시 mq로 진입
+- 가용량 확보시 mq에 쌓인 순서대로 성공케이스로 처리
+
+### push
+- 실패시 대기열에 진입하고 대기열정보를 가지고 websocket으로 push 서버로 접근
+- push 서버는 liveapi로 가용량이 확보되는지 주기적 체크
+- 가용량 확보시 mq에서 꺼내와 클라이언트에게 접근 가능하도록 push
+
+## 전체구성도
