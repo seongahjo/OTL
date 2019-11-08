@@ -119,3 +119,4 @@ Onair waiTing Line (OTL)
 - 가용량 확보시 mq에서 꺼내와 클라이언트에게 접근 가능하도록 push
 
 ## 전체구성도
+<img width="1157" alt="생중계대기열구성도" src="https://user-images.githubusercontent.com/25360239/68466525-ee33bd80-0257-11ea-897a-fa5d5f4287c3.png">
