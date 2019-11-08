@@ -70,8 +70,8 @@ Onair waiTing Line (OTL)
   - 모든 파일의 인코딩은 UTF-8
 
 ## 코딩 컨벤션
-
 - java coding convention on a page
+![JavaCodingConventionOnaPage](https://user-images.githubusercontent.com/25360239/68466694-44a0fc00-0258-11ea-9d8b-28d25483159a.gif)
 
 ## 가상서버 계정
 
