@@ -35,7 +35,13 @@ Onair waiTing Line (OTL)
   - nodejs 12.x.x
   - websocket
 
-## git 추천 동사
+## 버전관리
+### branch 기본
+- issue 별로 branch 분리
+- 코드리뷰 후에 approve 되면 develop 머지
+- master로 머지하여 배포
+
+### commit 메시지 추천 동사
 - Add : 새로운 기능추가
 - Remove : 제거
 - Improve : 기능, 성능의 향상
