@@ -81,7 +81,7 @@ Onair waiTing Line (OTL)
 
 ## 가상서버 계정
 
-- id : campus / campussu
+- id : campus / campussu (sudo 사용 가능 계정, 필요할때만 접속해서 사용)
 - pwd : 별도공유
 - 접속 서버
   - 106.10.33.151:20191 (server-otl)
