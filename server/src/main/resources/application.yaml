@@ -8,3 +8,8 @@ spring:
     username: guest
     password: guest
 
+otl:
+  url:
+    live-api: 'http://106.10.33.151:20194'
+    mq: '106.10.33.151:20195'
+    push: '106.10.33.151:20193'
