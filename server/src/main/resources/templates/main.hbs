@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>해외 리그오브레전드 게임센터 - 기록</title>
+    <link rel="stylesheet" type="text/css" href="/css/m.sports.css">
+    <link rel="stylesheet" type="text/css" href="/css/game_end_esports.css">
+</head>
+<body class="game_end">
+<div id="wrap">
+    <div class="u_skip"><a href="#content">본문 바로가기</a></div>
+
+    <header class="end_head end_head2 ready" style="position:relative;">
+        <h1 class="spr logo">
+            <a href="#" class="naver">네이버</a>
+            <a href="#" class="sports">스포츠</a>
+        </h1>
+        <a href="" class="spr_bf close"><span>닫기</span></a>
+
+    </header>
+    <div class="top_score_wrap top_score_esports">
+
+        <div class="match_bx">
+            <div class="info_area">
+                <!-- stat1, stat2, stat3
+                    <span class="btn_state stat1">경기전</span>
+                    <span class="btn_state stat2">9회말</span>
+                    <span class="btn_state stat3">경기종료</span>
+                -->
+                <span class="btn_state stat3">경기중</span>
+                <div class="info">
+                    <span class="date">{{schedule.gameDate}}</span>
+                    <span class="time">{{schedule.gameTime}}</span>
+                </div>
+            </div>
+            <div class="team_lft">
+                <div class="team">
+                    <span class="logo"><img alt="HH" src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png" width="25" height="25"></span>
+                    <div class="team_info">
+                        <strong class="team_name">{{schedule.homeTeamName}}</strong>
+                    </div>
+                </div>
+                <strong class="score"><span class="blind">점수</span>{{schedule.homeTeamScore}}</strong>
+            </div>
+            <div class="team_rgt">
+                <div class="team">
+                    <span class="logo"><img alt="NC" src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png" width="25" height="25"></span>
+                    <div class="team_info">
+                        <strong class="team_name">{{schedule.awayTeamName}}</strong>
+                    </div>
+                </div>
+                <strong class="score"><span class="blind">점수</span>{{schedule.awayTeamScore}}</strong>
+            </div>
+        </div>
+
+        <div class="game_nav_wrap" role="navigation">
+            <ul class="game_nav">
+                <!-- [D] 선택탭 selected 추가 -->
+                <li></li>
+                <li></li>
+                <li class="selected"><a href="#"><span>중계</span></a></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <!-- 안내문구 -->
+        <!-- [D] 리그오브레전드 페이지는 'end_record' 에 'esports_lol' class 를 추가해주세요! -->
+        <div id="_markup_game_ing" class="end_record esports_lol">
+            <div class="info_txt_common" style="display: none;">
+                <p>경기 종료 후 기록이 업데이트 됩니다.</p>
+                <a href="#" role="button" class="btn_info">응원하기</a>
+            </div>
+
+            <div class="section">
+                <!-- 상단 팀 vs 팀 승패 기록 -->
+                <div class="team_vs_record_set">
+                    <div class="game_info">
+                        <span class="time_info">경기시간</span>
+
+                    </div>
+                    <div class="team_left">
+                        <strong class="team_name">홈팀 최근 전적</strong>
+                        <span class="team_record">15승 7패</span>
+                        <em class="game_result win">승</em>
+                    </div>
+                    <div class="team_right">
+                        <strong class="team_name">어웨이 팀 최근 전적</strong>
+                        <span class="team_record">15승 7패</span>
+                        <em class="game_result no_game"><span class="blind">전적 없음</span></em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 여기에 hls 주소 넣어서 재생되도록 해주세요. -->
+            <div id="video_area">
+
+            </div>
+
+
+            <div class="notice_info_wrap">
+                <strong class="notice_info">&#8251; 해당 데이터는 네이버 스포츠에서 제공합니다.</strong>
+            </div>
+            <div class="ad_box" data-da="container_sports_ad">
+                <!-- 게임엔드 배너 광고 : 높이 80 -->
+                <div id="sports_placard" data-veta-preview="m_sports_01"><a data-ssp="clk" href="https://sbm.veta.naver.com/fxclick?eu=EU10041325&amp;calp=kbaseball&amp;oj=tLY2mRwPe2TYb0IfC0jrMkVprKMnLbzjL0rvAQNkhckAjdZGQXYgyCx4Qm58IVk99OJLIKKVUzQ2%2BvO6UJWr%2Bv7ZOWHpb3XLEvj21LwuAKA%2Fpcpmy0ZZdfVJwo5hKV6wUAdlnMrVKX17IbN%2BK1sdfUSctOFyVTei2yvINaf9pdssjqLAnfmHR%2B88uUL0xl23wfrC02YhilQ3t9FslInAFma%2B8dd%2F15En9VdIcpKRQ0Z7Pj%2F%2FmsYTotBLREtlwpiB&amp;ac=7778470&amp;src=3688847&amp;br=2821947&amp;evtcd=P901&amp;x_ti=1084&amp;tb=&amp;oid=&amp;sid1=&amp;sid2=&amp;rk=2649e6ce4f7814b68216e83942e5b718&amp;eltts=%2BQLldVgtMVIQ1H5D69ZyRw%3D%3D&amp;lu=&amp;brs=Y&amp;&amp;" style="display:block;background:#fff;"><span id="nbp_da_img" data-role="imgWrapper" style="display:block;width:100%;height:80px;background:url(https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270_bg_left.jpg) repeat-x;background-size:auto 80px;-webkit-background-size:1px 80px;text-decoration:none;text-align:center;"><img src="https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270.jpg" alt="[광고]페레로 로쉐가 로맨틱한 발렌타인데이를 선사합니다." height="80" data-media-width="720" data-media-height="300" data-content-type="image" style="vertical-align:top;border:none"></span></a></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="page_fast">
+            <a href="#"><b class="spr_bf">맨위로</b></a>
+        </div>
+
+        <div class="ft_league">
+            <!-- [D] 리그메뉴 해상도별 갯수조정은 CSS에서 (링크는 모두 걸어주세요) -->
+            <ul>
+                <li class="league_li"><a href="#">스포츠홈</a></li>
+                <li class="league_li"><a href="#">야구</a></li>
+                <li class="league_li"><a href="#">해외야구</a></li>
+                <li class="league_li"><a href="#">축구</a></li>
+                <li class="league_li"><a href="#">해외축구</a></li>
+                <li class="league_li"><a href="#">농구</a></li>
+                <li class="league_li"><a href="#">배구</a></li>
+                <li class="league_li"><a href="#">골프</a></li>
+                <li class="league_li"><a href="#">일반</a></li>
+                <li class="league_li"><a href="#">e스포츠&amp;게임</a></li>
+                <li class="league_li"><a href="#">베스트댓글</a></li>
+                <li class="league_li"><a href="#">라디오</a></li>
+            </ul>
+        </div>
+
+        <div class="ft_notice">
+            <a href="#"><span>공지</span>네이버 스포츠가 포스트 서비스를 시작합니다.</a>
+
+            <div class="service_info">
+                <div class="main_btn_wrap">
+                    <a href="#" class="main_btn">로그아웃</a>
+                    <a href="#" class="main_btn">전체서비스</a>
+                    <a href="#" class="main_btn">PC버전</a>
+                </div>
+
+                <div class="sub_btn_wrap">
+                    <a href="#" class="sub_btn">스포츠 고객센터</a>
+                    <a href="#" class="sub_btn"><strong>개인정보처리방침</strong></a>
+                    <a href="#" class="sub_btn">문제신고</a>
+                </div>
+
+                <p class="copyright">본 콘텐츠의 저작권은 제공처 또는 네이버에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적책임을 질 수 있습니다.</p>
+                <span class="naver">© <a href="#">NAVER Corp.</a></span>
+            </div>
+
+            <div class="u_sca">
+                <a href="#" onclick="onCreateFavicon(event);nclk(this,'fot.shorcut','','',event);" class="u_sc">
+                    <span class="u_ics"></span><em>네이버앱의</em><strong>스포츠</strong> 홈화면에 바로가기 추가 <span class="u_ica"></span>
+                </a>
+            </div>
+    </footer>
+</div>
+<div id="toggleView" style="position: fixed; bottom: 10px; right: 10px; z-index: 10000; max-width:288px; padding: 5px 5px 1px 5px; background-color: rgba(255, 255, 255, 0.8); border: 1px solid #474747;">
+    <button id="toggleHideAll" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: transparent; color: tomato; border-color: transparent;">메뉴 숨기기</button>
+    <button id="toggleA" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">데이터 인입전</button>
+    <button id="toggleB" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">데이터 인입후</button>
+</div>
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="http://viewoss.navercorp.com/UIT-SPORTS/m.sports/blob/develop/src/js/build/iscroll.js"></script>
+<script>
+    $(function () {
+        $('#toggleHideAll').click(function () {
+            $(this).siblings().toggle();
+            $(this).text('메뉴 펼치기');
+        });
+        // 확인용 버튼 제이쿼리 작성
+        $('#toggleA').click(function () {
+            $('.info_txt_common').show();
+            $('.section').hide();
+            $('.notice_info_wrap').hide();
+        });
+
+        $('#toggleB').click(function () {
+            $('.info_txt_common').hide();
+            $('.section').show();
+            $('.notice_info_wrap').show();
+        })
+    })
+</script>
+<script type="text/javascript">
+    var myScroll;
+    $(window).load(function () {
+        myScroll = new IScroll('#scroll_tab', { scrollX: true, scrollY: false, mouseWheel: true });
+    });
+</script>
+<script type="text/javascript">
+    var elHeight = function() {
+        $(window).scroll(function () {
+            if( $(this).scrollTop() >= 170 ) {
+                $('.end_head .gnb').addClass('fix');
+            } else {
+                $('.end_head .gnb').removeClass('fix');
+            }
+        });
+        $('.game_nav_floating a').on('click', function(e) {
+            $(this).parent().siblings().removeClass('selected');
+            $(this).parent().addClass('selected');
+            e.preventDefault();
+        });
+    };
+
+    elHeight();
+    $('.game_nav li').removeClass('selected').eq(4).addClass('selected');
+
+    $('.middle_space_txt.object').click(function(){
+        $('.ban_pick_object_component').toggleClass('open');
+        $('.dragon_info_wrap').toggleClass('open');
+    });
+</script>
+</html>

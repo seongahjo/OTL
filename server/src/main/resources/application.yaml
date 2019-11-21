@@ -1,0 +1,24 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+otl:
+  url:
+    live-api: 'http://106.10.33.151:20194'
+    mq: 'http://106.10.33.151:20195'
+    push: 'http://106.10.33.151:20193'
+
+---
+spring:
+  profiles: prod
+  rabbitmq:
+    host: 106.10.34.82
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
