@@ -9,10 +9,10 @@ public class GameRegistrator {
 	private final Sender sender;
 
 	public void send(String message) {
-		sender.send(Sender.NAME.OWL, message);
+		sender.send(Sender.Name.OWL, message);
 	}
 
 	public Integer getCount() {
-		return sender.getCount(Sender.NAME.OWL);
+		return sender.getCount(Sender.Name.OWL);
 	}
 }
