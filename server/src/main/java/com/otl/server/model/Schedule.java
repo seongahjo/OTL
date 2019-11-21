@@ -8,9 +8,11 @@ import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +30,4 @@ public class Schedule {
 	private Integer channelCode;
 	@Column
 	private LocalDateTime gameDateTime;
-
-	public Schedule(String homeTeamName, String awayTeamName, Integer homeTeamScore, Integer awayTeamScore, Integer channelCode, LocalDateTime gameDateTime) {
-		this.homeTeamName = homeTeamName;
-		this.awayTeamName = awayTeamName;
-		this.homeTeamScore = homeTeamScore;
-		this.awayTeamScore = awayTeamScore;
-		this.channelCode = channelCode;
-		this.gameDateTime = gameDateTime;
-	}
 }
