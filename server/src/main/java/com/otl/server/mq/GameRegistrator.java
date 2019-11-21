@@ -1,4 +1,4 @@
-package com.sajo.hackday.server.mq;
+package com.otl.server.mq;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
