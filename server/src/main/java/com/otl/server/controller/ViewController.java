@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewController {
 	private final ScheduleService scheduleService;
 
-	@GetMapping("/")
-	public String mainView(Model model) {
-		model.addAttribute("schedules", scheduleService.getAllSchedules());
+	@GetMapping("/view")
+	public String mainView(Integer gameId, Model model) {
+		model.addAttribute(scheduleService.getScheduleByGameId(gameId));
 		return "main";
 	}
 }
