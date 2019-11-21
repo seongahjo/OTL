@@ -13,7 +13,8 @@ public class ScheduleDto {
 	private Integer homeTeamScore;
 	private Integer awayTeamScore;
 	private Integer channelCode;
-	private LocalDateTime gameDateTime;
+	private String gameDate;
+	private String gameTime;
 
 	public ScheduleDto(Schedule schedule) {
 		this.homeTeamName = schedule.getHomeTeamName();
@@ -21,6 +22,8 @@ public class ScheduleDto {
 		this.homeTeamScore = schedule.getHomeTeamScore();
 		this.awayTeamScore = schedule.getAwayTeamScore();
 		this.channelCode = schedule.getChannelCode();
-		this.gameDateTime = schedule.getGameDateTime();
+		LocalDateTime localDateTime = schedule.getGameDateTime();
+		this.gameDate = String.format("%d.%d", localDateTime.getMonthValue(), localDateTime.getDayOfMonth());
+		this.gameTime = String.format("%d:%d", localDateTime.getHour(), localDateTime.getMinute());
 	}
 }
