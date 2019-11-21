@@ -12,7 +12,7 @@ public class GameRegistrator {
 		sender.send(Sender.NAME.OWL, message);
 	}
 
-	public Integer getCount(){
+	public Integer getCount() {
 		return sender.getCount(Sender.NAME.OWL);
 	}
 }

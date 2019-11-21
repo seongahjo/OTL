@@ -16,22 +16,22 @@ public class Sender {
 	private final RabbitMessagingTemplate template;
 	private final AmqpAdmin amqpAdmin;
 
-	public enum NAME {
+	public enum Name {
 		OWL
 	}
 
 	@Bean
 	Queue queue() {
-		return QueueBuilder.nonDurable(NAME.OWL.name()).build();
+		return QueueBuilder.nonDurable(Name.OWL.name()).build();
 	}
 
-	public int getCount(NAME queuename){
+	public int getCount(Name queuename) {
 		Integer count = (Integer) amqpAdmin.getQueueProperties(queuename.name()).get("QUEUE_MESSAGE_COUNT");
-		log.info("Get Message Count {} ",count);
+		log.info("Get Message Count {} ", count);
 		return count;
 	}
 
-	public void send(NAME queuename, String message) {
+	public void send(Name queuename, String message) {
 		template.convertAndSend(queuename.name(), message);
 		log.info("Message Send {} ", message);
 	}

@@ -1,7 +1,6 @@
 package com.otl.server.controller;
 
-
-import com.otl.server.dto.StatusDTO;
+import com.otl.server.dto.StatusDto;
 import com.otl.server.mq.GameRegistrator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,10 +36,11 @@ public class MainController {
 			registrator.send(String.format("%d;%d", CLIENT_ID, gameId)); // 5
 		} else {
 			try {
-				ResponseEntity<StatusDTO> response = template.getForEntity(url, StatusDTO.class); // 3
-				StatusDTO dto = response.getBody();
-				if (dto.isSuccess())
+				ResponseEntity<StatusDto> response = template.getForEntity(url, StatusDto.class); // 3
+				StatusDto dto = response.getBody();
+				if (dto.isSuccess()) {
 					return ResponseEntity.ok().body(dto.getUrl()); // 6
+				}
 			} catch (Exception e) {
 				log.info("LIVE SERVER {} is dead", liveApiUrl);
 			}

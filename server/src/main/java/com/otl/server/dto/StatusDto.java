@@ -2,13 +2,10 @@ package com.otl.server.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 @Data
-public class StatusDTO {
-	@NotNull
+public class StatusDto {
 	private boolean isSuccess;
-	@NotNull
 	private Integer gameId;
 	private String url;
 }
