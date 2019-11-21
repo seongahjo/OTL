@@ -28,4 +28,13 @@ public class Schedule {
 	private Integer channelCode;
 	@Column
 	private LocalDateTime gameDateTime;
+
+	public Schedule(String homeTeamName, String awayTeamName, Integer homeTeamScore, Integer awayTeamScore, Integer channelCode, LocalDateTime gameDateTime) {
+		this.homeTeamName = homeTeamName;
+		this.awayTeamName = awayTeamName;
+		this.homeTeamScore = homeTeamScore;
+		this.awayTeamScore = awayTeamScore;
+		this.channelCode = channelCode;
+		this.gameDateTime = gameDateTime;
+	}
 }
