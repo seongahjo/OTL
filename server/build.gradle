@@ -8,6 +8,10 @@ group = 'com.otl.server'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+bootRun {
+    // support passing -Dsystem.property=value to bootRun task
+    systemProperties = System.properties
+}
 
 configurations {
     developmentOnly
@@ -22,6 +26,8 @@ configurations {
 repositories {
     mavenCentral()
 }
+
+
 
 dependencies {
     compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
