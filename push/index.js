@@ -37,6 +37,7 @@ io.on('connection', function (socket) {
 	socket.on('init', async function (data) {
 		var clientId = data.clientId.toString();
 		var gameId = data.gameId.toString();
+		console.log('connection '+clientId);
 		map.set(clientId, socket);
 		if (!isRun) {
 			runMQ();
