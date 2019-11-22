@@ -11,9 +11,10 @@ let q = 'OWL';
 let isRun = false;
 const consumeToQueue = async (ch, queueName) => {
     await ch.consume(queueName, (msg) => {
-        console.log(msg.content);
+
         msgStr = Buffer.from(msg.content).toString();
         msgSplit = msgStr.split(';');
+        console.log(msgStr);
         let clientId = msgSplit[0];
         let gameId = msgSplit[1];
         console.log(clientId);
@@ -36,7 +37,6 @@ async function runMQ() {
 
 io.on('connection', function (socket) {
     socket.on('init', async function (data) {
-        console.log(data);
         var clientId = data.clientId+"";
         var gameId = data.gameId+"";
         map.set(clientId, socket);
