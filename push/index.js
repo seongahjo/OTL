@@ -9,27 +9,26 @@ gameMap.set("2", "https://nlive-hls.pstatic.net/ch200/ch200_2000.stream/playlist
 let amqpUrl = "amqp://rabbitmq:rabbitmq@10.41.0.142";
 let q = 'OWL';
 let isRun = false;
-const consumeToQueue = async (ch, queueName) => {
-	await ch.consume(queueName, (msg) => {
+const consumeToQueue = (ch, queueName) => {
+	ch.consume(queueName, (msg) => {
 		msgStr = Buffer.from(msg.content).toString();
 		msgSplit = msgStr.split(';');
 		console.log(msgStr);
 		let clientId = msgSplit[0];
 		let gameId = msgSplit[1];
 		console.log('queue : ' + clientId);
-		while ((socket = map.get(clientId)) == undefined){
+		while ((socket = map.get(clientId)) == undefined) {
 		}
-			let gameUrl = gameMap.get(gameId);
-			socket.emit('url', {url: gameUrl});
-			ch.ack(msg);
-
+		let gameUrl = gameMap.get(gameId);
+		socket.emit('url', {url: gameUrl});
+		ch.ack(msg);
 	});
 };
 
 async function runMQ() {
 	conn = await amqp.connect(amqpUrl);
 	ch = await conn.createChannel();
-	await consumeToQueue(ch, q);
+	consumeToQueue(ch, q);
 }
 
 // WARNING: app.listen(80) will NOT work here!
