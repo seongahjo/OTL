@@ -19,8 +19,10 @@ const consumeToQueue = (ch, queueName) => {
 		console.log('queue : ' + clientId);
 		socket = map.get(clientId);
 		map.delete(clientId);
-		let gameUrl = gameMap.get(gameId);
-		socket.emit('url', {url: gameUrl});
+		if(socket != undefined) {
+			let gameUrl = gameMap.get(gameId);
+			socket.emit('url', {url: gameUrl});
+		}
 		ch.ack(msg);
 	});
 };
