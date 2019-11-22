@@ -10,38 +10,37 @@ let amqpUrl = "amqp://rabbitmq:rabbitmq@10.41.0.142";
 let q = 'OWL';
 let isRun = false;
 const consumeToQueue = async (ch, queueName) => {
-    await ch.consume(queueName, (msg) => {
-        msgStr = Buffer.from(msg.content).toString();
-        msgSplit = msgStr.split(';');
-        console.log(msgStr);
-        let clientId = msgSplit[0];
-        let gameId = msgSplit[1];
-        console.log(clientId);
-        console.log(map);
-        let socket = map.get(clientId);
-        let gameUrl = gameMap.get(gameId);
-        console.log(gameUrl);
-        socket.emit('url', {url: gameUrl});
-        ch.ack(msg);
-    });
+	await ch.consume(queueName, (msg) => {
+		msgStr = Buffer.from(msg.content).toString();
+		msgSplit = msgStr.split(';');
+		console.log(msgStr);
+		let clientId = msgSplit[0];
+		let gameId = msgSplit[1];
+		let socket = map.get(clientId);
+		if (socket != undefined) {
+			let gameUrl = gameMap.get(gameId);
+			socket.emit('url', {url: gameUrl});
+			ch.ack(msg);
+		}
+	});
 };
 
 async function runMQ() {
-    conn = await amqp.connect(amqpUrl);
-    ch = await conn.createChannel();
-    await consumeToQueue(ch, q);
+	conn = await amqp.connect(amqpUrl);
+	ch = await conn.createChannel();
+	await consumeToQueue(ch, q);
 }
 
 // WARNING: app.listen(80) will NOT work here!
 
 io.on('connection', function (socket) {
-    socket.on('init', async function (data) {
-        var clientId = data.clientId.toString();
-        var gameId = data.gameId.toString();
-        map.set(clientId, socket);
-        if(!isRun){
-            runMQ();
-            isRun=true;
-        }
-    });
+	socket.on('init', async function (data) {
+		var clientId = data.clientId.toString();
+		var gameId = data.gameId.toString();
+		map.set(clientId, socket);
+		if (!isRun) {
+			runMQ();
+			isRun = true;
+		}
+	});
 });
