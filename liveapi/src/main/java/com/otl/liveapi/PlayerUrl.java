@@ -11,8 +11,6 @@ import javax.validation.constraints.Size;
 @IdClass(PlayerId.class)
 public class PlayerUrl {
     @Id
-    private Long clientId;
-    @Id
     private Long gameId;
 
     @NotNull
