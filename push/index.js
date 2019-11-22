@@ -16,13 +16,12 @@ const consumeToQueue = async (ch, queueName) => {
 		console.log(msgStr);
 		let clientId = msgSplit[0];
 		let gameId = msgSplit[1];
-		console.log('queue : '+clientId);
-		let socket = map.get(clientId);
-		if (socket != undefined) {
+		console.log('queue : ' + clientId);
+		while ((socket = map.get(clientId)) == undefined);
 			let gameUrl = gameMap.get(gameId);
 			socket.emit('url', {url: gameUrl});
 			ch.ack(msg);
-		}
+
 	});
 };
 
@@ -30,6 +29,7 @@ async function runMQ() {
 	conn = await amqp.connect(amqpUrl);
 	ch = await conn.createChannel();
 	await consumeToQueue(ch, q);
+	conn.
 }
 
 // WARNING: app.listen(80) will NOT work here!
@@ -38,7 +38,7 @@ io.on('connection', function (socket) {
 	socket.on('init', async function (data) {
 		var clientId = data.clientId.toString();
 		var gameId = data.gameId.toString();
-		console.log('connection '+clientId);
+		console.log('connection ' + clientId);
 		map.set(clientId, socket);
 		if (!isRun) {
 			runMQ();
