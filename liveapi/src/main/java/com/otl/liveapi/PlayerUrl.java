@@ -8,9 +8,12 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-//@IdClass(PlayerId.class)
-public class PlayerURL {
-    @EmbeddedId PlayerId playerId;
+@IdClass(PlayerId.class)
+public class PlayerUrl {
+    @Id
+    private Long clientId;
+    @Id
+    private Long gameId;
 
     @NotNull
     @Size(max=1024)

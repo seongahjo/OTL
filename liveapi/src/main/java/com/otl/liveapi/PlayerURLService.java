@@ -1,17 +1,20 @@
 package com.otl.liveapi;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class PlayerURLService {
-    @Autowired
-    PlayerURLRepository playerURLRepository;
+
+    final PlayerURLRepository playerURLRepository;
 
     public String getURLById(long clientId, long gameId) {
-        List<PlayerURL> res = playerURLRepository.findByPlayerId(new PlayerId(clientId, gameId));
-        return res.get(0).getUrl();
+
+        PlayerId playerId = new PlayerId();
+        playerId.setClientId(clientId);
+        playerId.setGameId(gameId);
+        PlayerUrl res = playerURLRepository.findById(playerId).get();
+        return res.getUrl();
     }
 }
