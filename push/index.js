@@ -17,7 +17,8 @@ const consumeToQueue = async (ch, queueName) => {
 		let clientId = msgSplit[0];
 		let gameId = msgSplit[1];
 		console.log('queue : ' + clientId);
-		while ((socket = map.get(clientId)) == undefined);
+		while ((socket = map.get(clientId)) == undefined){
+		}
 			let gameUrl = gameMap.get(gameId);
 			socket.emit('url', {url: gameUrl});
 			ch.ack(msg);
@@ -29,7 +30,6 @@ async function runMQ() {
 	conn = await amqp.connect(amqpUrl);
 	ch = await conn.createChannel();
 	await consumeToQueue(ch, q);
-	conn.
 }
 
 // WARNING: app.listen(80) will NOT work here!
