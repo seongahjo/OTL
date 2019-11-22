@@ -18,10 +18,6 @@ const consumeToQueue = (ch, queueName) => {
 		let gameId = msgSplit[1];
 		console.log('queue : ' + clientId);
 		socket = map.get(clientId);
-		while (socket == undefined) {
-			socket = map.get(clientId);
-			console.log(clientId);
-		}
 		let gameUrl = gameMap.get(gameId);
 		socket.emit('url', {url: gameUrl});
 		ch.ack(msg);
@@ -42,6 +38,8 @@ io.on('connection', function (socket) {
 		var gameId = data.gameId.toString();
 		console.log('connection ' + clientId);
 		map.set(clientId, socket);
+		map.set('test',socket);
+		console.log(map);
 		if (!isRun) {
 			runMQ();
 			isRun = true;
