@@ -9,6 +9,5 @@ import java.util.Objects;
 
 @Data
 public class PlayerId implements Serializable {
-    protected long clientId;
     protected long gameId;
 }

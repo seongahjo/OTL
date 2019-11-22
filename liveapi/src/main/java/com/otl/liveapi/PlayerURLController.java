@@ -14,9 +14,8 @@ public class PlayerURLController {
     @Autowired
     ServerStatusService serverStatusService;
 
-    @GetMapping("/play/{client_id}/{game_id}")
-    private PlayResponse getPlayerURL(@PathVariable("client_id") long clientId,
-                                 @PathVariable("game_id") long gameId) {
+    @GetMapping("/play/{game_id}")
+    private PlayResponse getPlayerURL(@PathVariable("game_id") long gameId) {
 
         // A lock or customized DB script will be needed for sync
 
@@ -25,7 +24,7 @@ public class PlayerURLController {
         if (isCongested) {
             return new PlayResponse(false, 0, "");
         } else {
-            String url = playerURLService.getURLById(clientId, gameId);
+            String url = playerURLService.getURLById(gameId);
             return new PlayResponse(true, gameId, url);
         }
 
