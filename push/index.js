@@ -11,11 +11,12 @@ let q = 'OWL';
 let isRun = false;
 const consumeToQueue = async (ch, queueName) => {
     await ch.consume(queueName, (msg) => {
+        console.log(msg.content);
         msgStr = msg.content.toString();
         msgSplit = msgStr.split(';');
         let clientId = msgSplit[0];
         let gameId = msgSplit[1];
-        console.log(gameId);
+        console.log(clientId);
         let socket = map.get(clientId);
         let gameUrl = gameMap.get(gameId);
         console.log(gameUrl);
