@@ -24,6 +24,8 @@ const consumeToQueue = (ch, queueName) => {
 			socket.emit('url', {url: gameUrl});
 		}
 		ch.ack(msg);
+		ch.close();
+		isRun=false;
 	});
 };
 
