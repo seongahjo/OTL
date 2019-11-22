@@ -12,7 +12,7 @@ let isRun = false;
 const consumeToQueue = async (ch, queueName) => {
     await ch.consume(queueName, (msg) => {
         console.log(msg.content);
-        msgStr = msg.content.toString();
+        msgStr = Buffer.from(msg.content).toString();
         msgSplit = msgStr.split(';');
         let clientId = msgSplit[0];
         let gameId = msgSplit[1];
