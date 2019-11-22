@@ -17,6 +17,7 @@ const consumeToQueue = async (ch, queueName) => {
         let clientId = msgSplit[0];
         let gameId = msgSplit[1];
         console.log(clientId);
+        console.log(map);
         let socket = map.get(clientId);
         let gameUrl = gameMap.get(gameId);
         console.log(gameUrl);
