@@ -17,7 +17,10 @@ const consumeToQueue = (ch, queueName) => {
 		let clientId = msgSplit[0];
 		let gameId = msgSplit[1];
 		console.log('queue : ' + clientId);
-		while ((socket = map.get(clientId)) == undefined) {
+		socket = map.get(clientId);
+		while (socket == undefined) {
+			socket = map.get(clientId);
+			console.log(clientId);
 		}
 		let gameUrl = gameMap.get(gameId);
 		socket.emit('url', {url: gameUrl});
