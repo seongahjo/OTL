@@ -12,7 +12,7 @@ public class GameRegistrator {
 		sender.send(Sender.Name.OWL, message);
 	}
 
-	public Integer getCount() {
+	public Integer size() {
 		return sender.getCount(Sender.Name.OWL);
 	}
 }
