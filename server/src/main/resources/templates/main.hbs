@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>해외 리그오브레전드 게임센터 - 기록</title>
     <link rel="stylesheet" type="text/css" href="/css/m.sports.css">
     <link rel="stylesheet" type="text/css" href="/css/game_end_esports.css">
@@ -23,11 +24,6 @@
 
         <div class="match_bx">
             <div class="info_area">
-                <!-- stat1, stat2, stat3
-                    <span class="btn_state stat1">경기전</span>
-                    <span class="btn_state stat2">9회말</span>
-                    <span class="btn_state stat3">경기종료</span>
-                -->
                 <span class="btn_state stat3">경기중</span>
                 <div class="info">
                     <span class="date">{{schedule.gameDate}}</span>
@@ -36,7 +32,9 @@
             </div>
             <div class="team_lft">
                 <div class="team">
-                    <span class="logo"><img alt="HH" src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png" width="25" height="25"></span>
+                    <span class="logo"><img alt="HH"
+                                            src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png"
+                                            width="25" height="25"></span>
                     <div class="team_info">
                         <strong class="team_name">{{schedule.homeTeamName}}</strong>
                     </div>
@@ -45,7 +43,9 @@
             </div>
             <div class="team_rgt">
                 <div class="team">
-                    <span class="logo"><img alt="NC" src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png" width="25" height="25"></span>
+                    <span class="logo"><img alt="NC"
+                                            src="https://imgsports.pstatic.net/images/emblem/new/kbo/default/HT.png"
+                                            width="25" height="25"></span>
                     <div class="team_info">
                         <strong class="team_name">{{schedule.awayTeamName}}</strong>
                     </div>
@@ -96,7 +96,7 @@
 
             <!-- 여기에 hls 주소 넣어서 재생되도록 해주세요. -->
             <div id="video_area">
-
+                <video id="video" style="width: 100%; height: 100%;" controls=""></video>
             </div>
 
 
@@ -105,7 +105,14 @@
             </div>
             <div class="ad_box" data-da="container_sports_ad">
                 <!-- 게임엔드 배너 광고 : 높이 80 -->
-                <div id="sports_placard" data-veta-preview="m_sports_01"><a data-ssp="clk" href="https://sbm.veta.naver.com/fxclick?eu=EU10041325&amp;calp=kbaseball&amp;oj=tLY2mRwPe2TYb0IfC0jrMkVprKMnLbzjL0rvAQNkhckAjdZGQXYgyCx4Qm58IVk99OJLIKKVUzQ2%2BvO6UJWr%2Bv7ZOWHpb3XLEvj21LwuAKA%2Fpcpmy0ZZdfVJwo5hKV6wUAdlnMrVKX17IbN%2BK1sdfUSctOFyVTei2yvINaf9pdssjqLAnfmHR%2B88uUL0xl23wfrC02YhilQ3t9FslInAFma%2B8dd%2F15En9VdIcpKRQ0Z7Pj%2F%2FmsYTotBLREtlwpiB&amp;ac=7778470&amp;src=3688847&amp;br=2821947&amp;evtcd=P901&amp;x_ti=1084&amp;tb=&amp;oid=&amp;sid1=&amp;sid2=&amp;rk=2649e6ce4f7814b68216e83942e5b718&amp;eltts=%2BQLldVgtMVIQ1H5D69ZyRw%3D%3D&amp;lu=&amp;brs=Y&amp;&amp;" style="display:block;background:#fff;"><span id="nbp_da_img" data-role="imgWrapper" style="display:block;width:100%;height:80px;background:url(https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270_bg_left.jpg) repeat-x;background-size:auto 80px;-webkit-background-size:1px 80px;text-decoration:none;text-align:center;"><img src="https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270.jpg" alt="[광고]페레로 로쉐가 로맨틱한 발렌타인데이를 선사합니다." height="80" data-media-width="720" data-media-height="300" data-content-type="image" style="vertical-align:top;border:none"></span></a></div>
+                <div id="sports_placard" data-veta-preview="m_sports_01"><a data-ssp="clk"
+                                                                            href="https://sbm.veta.naver.com/fxclick?eu=EU10041325&amp;calp=kbaseball&amp;oj=tLY2mRwPe2TYb0IfC0jrMkVprKMnLbzjL0rvAQNkhckAjdZGQXYgyCx4Qm58IVk99OJLIKKVUzQ2%2BvO6UJWr%2Bv7ZOWHpb3XLEvj21LwuAKA%2Fpcpmy0ZZdfVJwo5hKV6wUAdlnMrVKX17IbN%2BK1sdfUSctOFyVTei2yvINaf9pdssjqLAnfmHR%2B88uUL0xl23wfrC02YhilQ3t9FslInAFma%2B8dd%2F15En9VdIcpKRQ0Z7Pj%2F%2FmsYTotBLREtlwpiB&amp;ac=7778470&amp;src=3688847&amp;br=2821947&amp;evtcd=P901&amp;x_ti=1084&amp;tb=&amp;oid=&amp;sid1=&amp;sid2=&amp;rk=2649e6ce4f7814b68216e83942e5b718&amp;eltts=%2BQLldVgtMVIQ1H5D69ZyRw%3D%3D&amp;lu=&amp;brs=Y&amp;&amp;"
+                                                                            style="display:block;background:#fff;"><span
+                        id="nbp_da_img" data-role="imgWrapper"
+                        style="display:block;width:100%;height:80px;background:url(https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270_bg_left.jpg) repeat-x;background-size:auto 80px;-webkit-background-size:1px 80px;text-decoration:none;text-align:center;"><img
+                        src="https://ssl.pstatic.net/tveta/libs/1222/1222635/4f1c7917d68b64828d5d_20190110155406270.jpg"
+                        alt="[광고]페레로 로쉐가 로맨틱한 발렌타인데이를 선사합니다." height="80" data-media-width="720" data-media-height="300"
+                        data-content-type="image" style="vertical-align:top;border:none"></span></a></div>
             </div>
         </div>
     </div>
@@ -155,25 +162,65 @@
 
             <div class="u_sca">
                 <a href="#" onclick="onCreateFavicon(event);nclk(this,'fot.shorcut','','',event);" class="u_sc">
-                    <span class="u_ics"></span><em>네이버앱의</em><strong>스포츠</strong> 홈화면에 바로가기 추가 <span class="u_ica"></span>
+                    <span class="u_ics"></span><em>네이버앱의</em><strong>스포츠</strong> 홈화면에 바로가기 추가 <span
+                        class="u_ica"></span>
                 </a>
             </div>
+        </div>
     </footer>
 </div>
-<div id="toggleView" style="position: fixed; bottom: 10px; right: 10px; z-index: 10000; max-width:288px; padding: 5px 5px 1px 5px; background-color: rgba(255, 255, 255, 0.8); border: 1px solid #474747;">
-    <button id="toggleHideAll" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: transparent; color: tomato; border-color: transparent;">메뉴 숨기기</button>
-    <button id="toggleA" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">데이터 인입전</button>
-    <button id="toggleB" style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">데이터 인입후</button>
+<div id="toggleView"
+     style="position: fixed; bottom: 10px; right: 10px; z-index: 10000; max-width:288px; padding: 5px 5px 1px 5px; background-color: rgba(255, 255, 255, 0.8); border: 1px solid #474747;">
+    <button id="toggleHideAll"
+            style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: transparent; color: tomato; border-color: transparent;">
+        메뉴 숨기기
+    </button>
+    <button id="toggleA"
+            style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">
+        데이터 인입전
+    </button>
+    <button id="toggleB"
+            style="padding: 4px; margin: 0 1px 4px 0; font-size: 12px; font-weight: bold; background-color: #fcfcfc; color: #474747; border: 1px solid #ccc;">
+        데이터 인입후
+    </button>
 </div>
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="http://viewoss.navercorp.com/UIT-SPORTS/m.sports/blob/develop/src/js/build/iscroll.js"></script>
+<script src="/js/hls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/js/video.js"></script>
 <script>
     $(function () {
+        var gameId = {{schedule.channelCode}};
+        var serverUrl = '{{serverUrl}}';
+        var socket;
+        $.ajax({
+            url: serverUrl + '/play?gameId=' + gameId,
+            type: 'GET'
+        }).done(function (dto) {
+            console.log(dto.url);
+            playM3u8(dto.url)
+        }).fail(function (x, _) {
+            var failDto = JSON.parse(x.responseText);
+            console.log(failDto);
+            socket = io.connect(failDto.url);
+            socket.emit('init', {
+                clientId: failDto.clientId,
+                gameId: gameId
+            });
+
+            socket.on('url', function (data) {
+                url = data.url;
+                playM3u8(url)
+            });
+
+        });
+
         $('#toggleHideAll').click(function () {
             $(this).siblings().toggle();
             $(this).text('메뉴 펼치기');
         });
+
         // 확인용 버튼 제이쿼리 작성
         $('#toggleA').click(function () {
             $('.info_txt_common').show();
@@ -185,25 +232,19 @@
             $('.info_txt_common').hide();
             $('.section').show();
             $('.notice_info_wrap').show();
-        })
-    })
-</script>
-<script type="text/javascript">
-    var myScroll;
-    $(window).load(function () {
-        myScroll = new IScroll('#scroll_tab', { scrollX: true, scrollY: false, mouseWheel: true });
+        });
     });
-</script>
-<script type="text/javascript">
-    var elHeight = function() {
+
+    var elHeight = function () {
         $(window).scroll(function () {
-            if( $(this).scrollTop() >= 170 ) {
+            if ($(this).scrollTop() >= 170) {
                 $('.end_head .gnb').addClass('fix');
             } else {
                 $('.end_head .gnb').removeClass('fix');
             }
         });
-        $('.game_nav_floating a').on('click', function(e) {
+
+        $('.game_nav_floating a').on('click', function (e) {
             $(this).parent().siblings().removeClass('selected');
             $(this).parent().addClass('selected');
             e.preventDefault();
@@ -213,7 +254,7 @@
     elHeight();
     $('.game_nav li').removeClass('selected').eq(4).addClass('selected');
 
-    $('.middle_space_txt.object').click(function(){
+    $('.middle_space_txt.object').click(function () {
         $('.ban_pick_object_component').toggleClass('open');
         $('.dragon_info_wrap').toggleClass('open');
     });
