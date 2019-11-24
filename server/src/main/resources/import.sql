@@ -1,1 +1,3 @@
 INSERT INTO Schedule(home_team_name,away_team_name,home_team_score,away_team_score,channel_code,game_date_time) VALUES ('SKT 게이밍','롱주 게이밍',2,1,0,'2019-08-01 18:30:00');
+INSERT INTO Schedule(home_team_name,away_team_name,home_team_score,away_team_score,channel_code,game_date_time) VALUES ('토튼햄','맨유',1,2,1,'2019-08-01 18:30:00');
+INSERT INTO Schedule(home_team_name,away_team_name,home_team_score,away_team_score,channel_code,game_date_time) VALUES ('레알 마드리드','바르셀로나',1,3,2,'2019-08-01 18:30:00');
