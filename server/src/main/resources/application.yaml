@@ -2,6 +2,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    open-in-view: false
   rabbitmq:
     host: localhost
     port: 5672
@@ -10,15 +11,20 @@ spring:
 
 otl:
   url:
-    live-api: 'http://106.10.33.151:20194'
-    mq: 'http://106.10.33.151:20195'
-    push: 'http://106.10.33.151:20193'
+    server: 'http://localhost:8080'
+    live-api: 'http://10.41.3.86'
+    push: 'http://10.41.4.126'
 
 ---
 spring:
   profiles: prod
   rabbitmq:
-    host: 106.10.34.82
+    host: 10.41.0.142
     port: 5672
     username: rabbitmq
     password: rabbitmq
+otl:
+  url:
+    server: 'http://sports.naver.com'
+    live-api: 'http://10.41.0.142'
+    push: '45.119.146.240'
