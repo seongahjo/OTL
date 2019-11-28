@@ -43,17 +43,18 @@ const consumeToQueue = async (queueName) => {
 	await ch.consume(queueName, (msg) => {
 		const msgStr = Buffer.from(msg.content).toString();
 		const msgSplit = msgStr.split(';');
-		log.info(`message "${msgStr}" is received from mq ${q}`);
 		const clientId = msgSplit[0];
 		const gameId = msgSplit[1];
 		const socket = map.get(clientId);
+		const gameUrl = gameMap.get(gameId);
+
+		log.info(`message "${msgStr}" is received from mq ${q}`);
 		if (socket === undefined) {
 			log.warn(`${clientId} is not connected`);
 			ch.nack(msg, false, true);
 			return;
 		}
 		map.delete(clientId);
-		const gameUrl = gameMap.get(gameId);
 		socket.emit('url', {url: gameUrl});
 		log.info(`${gameUrl} is sent to ${clientId}`);
 		ch.ack(msg);
@@ -61,11 +62,10 @@ const consumeToQueue = async (queueName) => {
 	await ch.close();
 };
 
-
 async function request(url, callback) {
 	try {
-		log.info(`fetch request ${url}`);
 		const res = await axios.get(url);
+		log.info(`fetch request ${url}`);
 		callback(res.data);
 	} catch (err) {
 		log.error(`server ${url} is down ${err}`);
