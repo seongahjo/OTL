@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @RestController
 @RequiredArgsConstructor
 public class PlayerURLController {
 	private final PlayerURLService playerURLService;
 	private final ServerStatusService serverStatusService;
 
+	private AtomicInteger accessCount = new AtomicInteger();
+
 	@GetMapping("/play/{game_id}")
 	public ResponseEntity<PlayResponse> getPlayerURL(@PathVariable("game_id") long gameId) {
+		accessCount.addAndGet(1);
 		boolean isCongested = serverStatusService.getIsCongested();
 
 		if (isCongested)
@@ -32,5 +37,9 @@ public class PlayerURLController {
 	public ResponseEntity<PlayResponses> getPlayList() {
 		boolean isCongested = serverStatusService.getIsCongested();
 		return ResponseEntity.ok(playerURLService.getAll(isCongested));
+	}
+
+	public AtomicInteger getAccessCount() {
+		return accessCount;
 	}
 }
