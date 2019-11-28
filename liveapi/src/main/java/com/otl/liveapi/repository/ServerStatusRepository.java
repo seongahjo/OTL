@@ -1,9 +1,8 @@
-package com.otl.liveapi;
+package com.otl.liveapi.repository;
 
+import com.otl.liveapi.model.ServerStatus;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
 public interface ServerStatusRepository extends CrudRepository<ServerStatus, Integer> {
-    List<ServerStatus> findByKey(String key);
+    ServerStatus findByKey(ServerStatus.SERVER_STATUS key);
 }

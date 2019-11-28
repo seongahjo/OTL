@@ -1,4 +1,4 @@
-package com.otl.liveapi;
+package com.otl.liveapi.vo;
 
 import lombok.Data;
 
@@ -9,7 +9,13 @@ public class PlayResponse {
     private long gameId;
     private String url;
 
-    PlayResponse(Boolean isSuccess, long gameId, String url) {
+    public PlayResponse(boolean isSuccess) {
+        this.isSuccess = isSuccess;
+        gameId = -1L;
+        url="";
+    }
+
+    public PlayResponse(Boolean isSuccess, long gameId, String url) {
         this.isSuccess = isSuccess;
         this.gameId = gameId;
         this.url = url;
