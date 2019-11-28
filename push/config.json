@@ -1,0 +1,12 @@
+{
+  "per_sec_request_time": 1,
+  "queue_name": "OWL",
+  "development": {
+	"amqp_url": "amqp://guest:guest@localhost",
+	"liveapi_url": "http://localhost:8080"
+  },
+  "production": {
+	"amqp_url": "amqp://rabbitmq:rabbitmq@10.41.0.142",
+	"liveapi_url": "http://106.10.50.177"
+  }
+}
