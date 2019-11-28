@@ -6,37 +6,38 @@ const map = new Map();
 const gameMap = new Map();
 const environment = process.env.NODE_ENV || 'development';
 const environmentConfig = config[environment];
-const liveAPI = environmentConfig.liveapi_url;
+const liveAPI = `${environmentConfig.liveapi_url}/play`;
 const amqpUrl = environmentConfig.amqp_url;
 const perRequestTime = config.per_sec_request_time;
 const q = config.queue_name;
 const log = require('./config/winston');
 
-
 let conn;
 
-io.on('connection', function (socket) {
+io.on('connection', (socket) => {
 	log.info(`socket connection is established`);
 	socket.on('init', async function (data) {
 		var clientId = data.clientId.toString();
-		// var gameId = data.gameId.toString();
 		log.info(`${clientId} is connected`);
 		map.set(clientId, socket);
 	});
 });
 
-async function connect() {
+
+const connect = async (amqpUrl) => {
+	let conn;
 	try {
 		conn = await amqp.connect(amqpUrl);
 		log.info(`rabbitmq ${amqpUrl} connected`);
 	} catch (err) {
 		log.error(`rabbitmq ${amqpUrl} not connected ${err}`);
 	}
-}
+	return conn;
+};
 
 const consumeToQueue = async (queueName) => {
 	if (conn === undefined) {
-		await connect();
+		conn = await connect();
 	}
 	const ch = await conn.createChannel();
 	await ch.consume(queueName, (msg) => {
@@ -60,29 +61,33 @@ const consumeToQueue = async (queueName) => {
 	await ch.close();
 };
 
-(async function init() {
-	await connect();
-	await request();
-})();
 
-async function request() {
+async function request(url, callback) {
 	try {
-		log.info(`fetch request ${liveAPI}/play`);
-		const res = await axios.get(liveAPI + "/play");
-		const isCongested = res.data.congested;
-		log.info(`now congestion is ${isCongested}`);
-		const plays = res.data.plays;
-		log.info(`url is received ${plays}`);
-		for (let play of plays) {
-			gameMap.set(play.gameId, play.url);
-		}
-		if (!isCongested) {
-			await consumeToQueue(q);
-		}
+		log.info(`fetch request ${url}`);
+		const res = await axios.get(url);
+		callback(res.data);
 	} catch (err) {
-		log.error(`server ${liveAPI} is down ${err}`);
+		log.error(`server ${url} is down ${err}`);
 	} finally {
-		setTimeout(request, perRequestTime * 1000 * 60);
+		setTimeout(request, perRequestTime * 1000 * 60, url, callback);
 	}
 }
 
+async function liveApiProcess(data) {
+	const isCongested = data.congested;
+	log.info(`now congestion is ${isCongested}`);
+	const plays = data.plays;
+	log.info(`url is received ${plays}`);
+	for (let play of plays) {
+		gameMap.set(play.gameId, play.url);
+	}
+	if (!isCongested) {
+		await consumeToQueue(q);
+	}
+}
+
+(async () => {
+	conn = await connect(amqpUrl);
+	await request(liveAPI, liveApiProcess);
+})();
