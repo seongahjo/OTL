@@ -17,7 +17,7 @@ let conn;
 io.on('connection', (socket) => {
 	log.info(`socket connection is established`);
 	socket.on('init', async function (data) {
-		var clientId = data.clientId.toString();
+		let clientId = data.clientId.toString();
 		log.info(`${clientId} is connected`);
 		map.set(clientId, socket);
 	});
@@ -48,7 +48,7 @@ const consumeToQueue = async (queueName) => {
 		const socket = map.get(clientId);
 		const gameUrl = gameMap.get(gameId);
 
-		log.info(`message "${msgStr}" is received from mq ${q}`);
+		log.info(`message "${msgStr}" is received from mq "${q}"`);
 		if (socket === undefined) {
 			log.warn(`${clientId} is not connected`);
 			ch.nack(msg, false, true);
