@@ -1,23 +1,16 @@
 package com.otl.liveapi.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class PlayResponse {
+	private boolean isCongested;
+	private PlayDto play;
 
-    private boolean isSuccess;
-    private long gameId;
-    private String url;
-
-    public PlayResponse(boolean isSuccess) {
-        this.isSuccess = isSuccess;
-        gameId = -1L;
-        url="";
-    }
-
-    public PlayResponse(Boolean isSuccess, long gameId, String url) {
-        this.isSuccess = isSuccess;
-        this.gameId = gameId;
-        this.url = url;
-    }
+	public PlayResponse(boolean isCongested) {
+		this.isCongested = isCongested;
+		this.play = new PlayDto();
+	}
 }
