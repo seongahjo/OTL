@@ -1,4 +1,4 @@
-package com.otl.liveapi;
+package com.otl.liveapi.model;
 
 import lombok.Data;
 

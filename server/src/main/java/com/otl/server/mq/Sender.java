@@ -25,14 +25,14 @@ public class Sender {
 		return QueueBuilder.nonDurable(Name.OWL.name()).build();
 	}
 
-	public int getCount(Name queuename) {
-		Integer count = (Integer) amqpAdmin.getQueueProperties(queuename.name()).get("QUEUE_MESSAGE_COUNT");
+	public int getCount(Name queueName) {
+		Integer count = (Integer) amqpAdmin.getQueueProperties(queueName.name()).get("QUEUE_MESSAGE_COUNT");
 		log.info("Get Message Count {} ", count);
 		return count;
 	}
 
-	public void send(Name queuename, String message) {
-		template.convertAndSend(queuename.name(), message);
+	public void send(Name queueName, String message) {
+		template.convertAndSend(queueName.name(), message);
 		log.info("Message Send {} ", message);
 	}
 }
