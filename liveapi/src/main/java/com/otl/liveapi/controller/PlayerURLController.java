@@ -19,11 +19,11 @@ public class PlayerURLController {
 	private final PlayerURLService playerURLService;
 	private final ServerStatusService serverStatusService;
 
-	private AtomicInteger accessCount = new AtomicInteger();
+	private static final AtomicInteger accessCount = new AtomicInteger();
 
 	@GetMapping("/play/{game_id}")
 	public ResponseEntity<PlayResponse> getPlayerURL(@PathVariable("game_id") long gameId) {
-		accessCount.addAndGet(1);
+		accessCount.incrementAndGet();
 		boolean isCongested = serverStatusService.getIsCongested();
 
 		if (isCongested)
@@ -39,7 +39,7 @@ public class PlayerURLController {
 		return ResponseEntity.ok(playerURLService.getAll(isCongested));
 	}
 
-	public AtomicInteger getAccessCount() {
+	public static AtomicInteger getAccessCount() {
 		return accessCount;
 	}
 }
